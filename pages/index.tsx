@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import Button from "@/components/Button";
@@ -16,7 +18,10 @@ export default function Home() {
   >([]);
 
   useEffect(() => {
-    window.Telegram.WebApp.ready();
+    const telegram = window?.Telegram.WebApp;
+    if (telegram) {
+      telegram.ready();
+    }
   }, []);
 
   const addToCart = (item: { id: number; name: string; price: number }) => {
