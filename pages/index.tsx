@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import Button from "@/components/Button";
@@ -16,7 +15,7 @@ export default function Home() {
   const [cart, setCart] = useState<
     { id: number; name: string; price: number; quantity: number }[]
   >([]);
-
+  console.log("Bot Token:", process.env.NEXT_PUBLIC_BOT_TOKEN);
   useEffect(() => {
     const telegram = window?.Telegram.WebApp;
     if (telegram) {
@@ -62,6 +61,9 @@ export default function Home() {
           </div>
         ))}
       </div>
+      {/* <div className="bg min-w-24 text-white text-sm flex justify-center items-center px-8 aspect-square bg-purple-500 rounded-xl">
+        Hello Oyin!
+      </div> */}
       <h2 className="text-xl font-semibold mb-4">Cart</h2>
       <div className="mb-8">
         {cart.length > 0 ? (
